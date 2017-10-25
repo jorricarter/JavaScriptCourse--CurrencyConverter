@@ -11,11 +11,12 @@ router.get('/convert', function(req, res, next){
     var toCurrency = req.query.to_currency;
 
     conversionRates( function(err, convertData) {
+        console.log(convertData.rates[fromCurrency]);
         // figure out math
         if (err) {
             return res.render('error' + err);
         } else {
-            var converted = currency / convertData[fromCurrency] * convertData[toCurrency];
+            var converted = currency / convertData.rates[fromCurrency] * convertData.rates[toCurrency];
             return res.render('results', {
                 currency: currency,
                 toCurrency: toCurrency,

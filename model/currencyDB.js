@@ -10,7 +10,7 @@ function conversionRates( callbackFunction ) {
         if (!error && convertRateResponse.statusCode == 200) {
             console.log("Conversion Site Says \n" + JSON.stringify(body));
             var convertJSON = JSON.parse(body);
-            callbackFunction(null);
+            callbackFunction(null, convertJSON);
         }
         else {
             console.log("Error in JSON request: " + error);
